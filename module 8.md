@@ -134,17 +134,46 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 ## Program:
+```c
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+int n;
+char arr[MAX][MAX];
+int used[MAX];
+char res[MAX][MAX];
 
-//type your code here
-
+void permute(int depth) {
+    if (depth == n) {
+        for (int i = 0; i < n; i++) {
+            printf("%s ", res[i]);
+        }
+        printf("\n");
+    }
+    for (int i = 0; i < n; i++) {
+        if (!used[i]) {
+            used[i] = 1;
+            strcpy(res[depth], arr[i]);
+            permute(depth + 1);
+            used[i] = 0;
+        }
+    }
+}
+int main() {
+    printf("Enter number :");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%s", arr[i]);
+    }
+    permute(0);
+}
+```
 
 
 
 ## Output:
 
-
-//paste your output here
-
+<img width="194" height="134" alt="image" src="https://github.com/user-attachments/assets/885b052f-0eb6-48df-9a6b-47eafb314957" />
 
 
 
